@@ -4,7 +4,7 @@ A flutter package to help you beautify your app popup, can be used in all platfo
 
 ## Preview:
 
-![Gif](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif =x600)
+![Gif](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif | height=600)
 
 ## Getting Started
 

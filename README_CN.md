@@ -4,7 +4,7 @@ beautiful_popup, 承包你的应用弹窗。[Live Demo](https://jaweii.github.io
 
 ## 效果图:
 
-![Gif](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif =x600)
+![Gif](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif | height=600)
 
 ## 使用
 
