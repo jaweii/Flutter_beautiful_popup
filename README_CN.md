@@ -4,7 +4,7 @@ beautiful_popup, 承包你的应用弹窗。[Live Demo](https://jaweii.github.io
 
 ## 效果图:
 
-![Gif][1]
+![Gif](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif =x600)
 
 ## 使用
 
@@ -65,4 +65,3 @@ await popup.recolor(newColor);
 
 [MIT](http://opensource.org/licenses/MIT)
 
-[1]: https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif
