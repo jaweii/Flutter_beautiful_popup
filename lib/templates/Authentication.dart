@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import '../main.dart';
 import 'Common.dart';
 
+/// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/authentication.png)
 class TemplateAuthentication extends BeautifulPopupTemplate {
   final BeautifulPopup options;
   TemplateAuthentication({

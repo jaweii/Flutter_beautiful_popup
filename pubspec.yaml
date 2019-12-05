@@ -1,8 +1,7 @@
 name: flutter_beautiful_popup
 description: A new Flutter package project.
 version: 0.0.1
-author:
-homepage:
+homepage: https://jaweii.github.io/Flutter_beautiful_popup/example/build/web
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

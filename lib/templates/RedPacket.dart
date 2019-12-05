@@ -4,6 +4,7 @@ import '../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'Common.dart';
 
+/// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/red_packet.png)
 class TemplateRedPacket extends BeautifulPopupTemplate {
   final BeautifulPopup options;
   TemplateRedPacket({

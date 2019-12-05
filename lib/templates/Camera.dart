@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'Common.dart';
 import '../main.dart';
 
-/// ![](../../img/bg/camera.png)
+/// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/camera.png)
 class TemplateCamera extends BeautifulPopupTemplate {
   final BeautifulPopup options;
   TemplateCamera({

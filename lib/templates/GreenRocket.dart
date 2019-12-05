@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'Common.dart';
 import '../main.dart';
 
-/// TODO 预览图
+/// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/rocket_green.png)
 class TemplateGreenRocket extends BeautifulPopupTemplate {
   final BeautifulPopup options;
   TemplateGreenRocket({
