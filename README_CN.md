@@ -12,7 +12,7 @@ beautiful_popup, 承包你的应用弹窗。[Live Demo](https://jaweii.github.io
 
 ```
 dependencies:
-    flutter_beautiful_popup: any
+    flutter_beautiful_popup: ^1.0.0
 ```
 
 引入依赖项:

@@ -52,7 +52,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 
   /// The path of the illustration asset.
   String get illustrationPath => '';
-  String get illustrationKey => 'packages/beautiful_popup/$illustrationPath';
+  String get illustrationKey => 'packages/flutter_beautiful_popup/$illustrationPath';
   Color get primaryColor;
 
   num percentW(num n) {

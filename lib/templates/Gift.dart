@@ -83,9 +83,9 @@ class TemplateGift extends BeautifulPopupTemplate {
       ),
       Positioned(
         top: percentH(35),
-        left: Theme.of(options.context).textTheme.display1.fontSize,
+        left: percentW(5),
         height: percentH(actions == null ? 60 : 50),
-        width: percentW(84),
+        width: percentW(90),
         child: content,
       ),
       Positioned(

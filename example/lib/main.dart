@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:beautiful_popup/main.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_highlight/themes/github-gist.dart';
+import 'dart:js' as js;
 
 void main() {
   runApp(MyApp());
@@ -136,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final exampleCode = ''' 
 final popup = BeautifulPopup(
   context: context,
-  template: ${activeDemo?.template ?? '// Select a template in right'},
+  template: ${activeDemo?.template?.runtimeType ?? '// Select a template in right'},
 );
                                                                   
 popup.show(
@@ -215,6 +216,19 @@ popup.show(
         elevation: 2,
         backgroundColor:
             activeDemo?.primaryColor ?? Theme.of(context).primaryColor,
+        actions: <Widget>[
+          FlatButton(
+            child: Image.asset(
+              'images/github.png',
+              width: 32,
+              height: 32,
+            ),
+            onPressed: () {
+              js.context.callMethod('open',
+                  ['https://github.com/jaweii/Flutter_beautiful_popup']);
+            },
+          ),
+        ],
       ),
       body: body,
     );
@@ -314,7 +328,7 @@ popup.show(
                 ],
               ),
               content: Container(
-                color: Colors.grey[100].withOpacity(0.5),
+                color: Colors.grey[50],
                 child: Scrollbar(
                   child: SingleChildScrollView(
                     child: Wrap(
