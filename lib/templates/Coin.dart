@@ -31,7 +31,7 @@ class TemplateCoin extends BeautifulPopupTemplate {
         child: title,
       ),
       Positioned(
-        top: percentH(55),
+        top: percentH(56),
         left: percentW(12),
         height: percentH(actions == null ? 38 : 26),
         width: percentW(76),

@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Image.asset(
                           demo.instance.illustrationKey,
-                          height: 100,
+                          height: 54,
                           width: 100,
                           fit: BoxFit.fitWidth,
                           alignment: Alignment.topCenter,
@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final exampleCode = ''' 
 final popup = BeautifulPopup(
   context: context,
-  template: ${activeDemo?.template?.runtimeType ?? '// Select a template in right'},
+  template: ${activeDemo?.instance?.runtimeType ?? '// Select a template in right'},
 );
                                                                   
 popup.show(
@@ -301,37 +301,44 @@ popup.show(
             if (title is Widget) {
               return openDemo(demo: demo);
             }
-            openDemo(
-              demo: demo,
-              title: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    '[Widget]',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: demo.primaryColor,
-                      backgroundColor: Colors.white70,
+            getTitle() {
+              return Opacity(
+                opacity: 0.95,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '[Widget]',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: demo.primaryColor,
+                        backgroundColor: Colors.white70,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Icon(
-                      Icons.star,
-                      color: demo.primaryColor.withOpacity(0.75),
-                      size: 10,
-                    ),
-                  )
-                ],
-              ),
-              content: Container(
-                color: Colors.grey[50],
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: Icon(
+                        Icons.star,
+                        color: demo.primaryColor.withOpacity(0.75),
+                        size: 10,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
+
+            getContent() {
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.1),
+                ),
                 child: Scrollbar(
                   child: SingleChildScrollView(
-                    child: Wrap(
+                    child: Column(
                       children: <Widget>[
                         CupertinoButton(
                           child: Text('Remove all buttons'),
@@ -342,10 +349,8 @@ popup.show(
                               template: demo.template,
                             );
                             demo.show(
-                              title: title,
-                              content: Container(
-                                color: Colors.grey[100],
-                              ),
+                              title: getTitle(),
+                              content: getContent(),
                               actions: [],
                             );
                           },
@@ -359,10 +364,8 @@ popup.show(
                               template: demo.template,
                             );
                             demo.show(
-                              title: title,
-                              content: Container(
-                                color: Colors.grey[100],
-                              ),
+                              title: getTitle(),
+                              content: getContent(),
                               actions: [
                                 demo.button(
                                   label: 'One button',
@@ -383,10 +386,8 @@ popup.show(
                               template: demo.template,
                             );
                             demo.show(
-                              title: title,
-                              content: Container(
-                                color: Colors.grey[100],
-                              ),
+                              title: getTitle(),
+                              content: getContent(),
                               close: Container(),
                               barrierDismissible: true,
                               actions: [
@@ -409,7 +410,7 @@ popup.show(
                               template: demo.template,
                             );
                             demo.show(
-                              title: 'Terms',
+                              title: getTitle(),
                               content: Flex(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 direction: Axis.vertical,
@@ -440,7 +441,13 @@ popup.show(
                     ),
                   ),
                 ),
-              ),
+              );
+            }
+
+            openDemo(
+              demo: demo,
+              title: getTitle(),
+              content: getContent(),
             );
           },
         )

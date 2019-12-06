@@ -28,8 +28,8 @@ class TemplateGift extends BeautifulPopupTemplate {
       bool outline = false,
     }) {
       final gradient = LinearGradient(colors: [
-        options.primaryColor.withOpacity(0.75),
-        options.primaryColor.withOpacity(0.5),
+        options.primaryColor.withOpacity(0.9),
+        options.primaryColor.withOpacity(0.7),
       ]);
       final double elevation = outline ? 0 : 2;
       final decoration = BoxDecoration(
@@ -82,7 +82,7 @@ class TemplateGift extends BeautifulPopupTemplate {
         child: title,
       ),
       Positioned(
-        top: percentH(35),
+        top: percentH(36),
         left: percentW(5),
         height: percentH(actions == null ? 60 : 50),
         width: percentW(90),

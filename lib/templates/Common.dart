@@ -27,9 +27,9 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
     double height = screenHeight > maxHeight ? maxHeight : screenHeight;
     double width;
     height = height - bodyMargin * 2;
-    if ((screenHeight - height) < 180) {
+    if ((screenHeight - height) < 160) {
       // For keep close button visible
-      height = screenHeight - 180;
+      height = screenHeight - 160;
       width = height / maxHeight * maxWidth;
     } else {
       if (screenWidth > maxWidth) {
@@ -52,7 +52,8 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 
   /// The path of the illustration asset.
   String get illustrationPath => '';
-  String get illustrationKey => 'packages/flutter_beautiful_popup/$illustrationPath';
+  String get illustrationKey =>
+      'packages/flutter_beautiful_popup/$illustrationPath';
   Color get primaryColor;
 
   num percentW(num n) {
@@ -97,27 +98,26 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 
   Widget get title {
     if (options.title is Widget) {
-      return SizedBox(
+      return Container(
         width: percentW(100),
         height: percentH(10),
-        child: Center(
-          child: options.title,
-        ),
+        alignment: Alignment.center,
+        child: options.title,
       );
     }
-    return SizedBox(
+    return Container(
+      alignment: Alignment.center,
       width: percentW(100),
-      child: Center(
-        child: Opacity(
-          opacity: 0.95,
-          child: AutoSizeText(
-            options.title,
-            maxLines: 1,
-            style: TextStyle(
-              fontSize: Theme.of(options.context).textTheme.display1.fontSize,
-              color: primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
+      height: percentH(10),
+      child: Opacity(
+        opacity: 0.95,
+        child: AutoSizeText(
+          options.title,
+          maxLines: 1,
+          style: TextStyle(
+            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            color: primaryColor,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -221,17 +221,22 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
     Future.delayed(Duration.zero, () {
       closeEntry = OverlayEntry(
         builder: (ctx) {
+          final bottom = (MediaQuery.of(context).size.height -
+                      widget.height -
+                      widget.bodyMargin * 2) /
+                  4 -
+              20;
           return Stack(
             overflow: Overflow.visible,
             children: <Widget>[
               Positioned(
                 child: Container(
                   alignment: Alignment.center,
-                  child: widget.close ?? Container(),
+                  child: widget.options.close ?? Container(),
                 ),
                 left: 0,
                 right: 0,
-                bottom: 20,
+                bottom: bottom,
               )
             ],
           );

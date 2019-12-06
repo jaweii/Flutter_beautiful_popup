@@ -20,7 +20,6 @@ import 'templates/Fail.dart';
 import 'templates/Authentication.dart';
 import 'templates/Term.dart';
 import 'templates/RedPacket.dart';
-
 export 'templates/OrangeRocket.dart';
 export 'templates/GreenRocket.dart';
 export 'templates/OrangeRocket2.dart';

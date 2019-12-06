@@ -4,7 +4,7 @@ A flutter package to help you beautify your app popups, can be used in all platf
 
 ## Preview:
 
-<img src="https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif" height="600">
+<img src="https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif" style="max-height: 600px;">
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ Add dependency to you `pubspec.yaml`:
 
 ```
 dependencies:
-    flutter_beautiful_popup: ^1.0.0
+    flutter_beautiful_popup: ^1.1.0
 ```
 
 Import the dependency:
@@ -31,7 +31,6 @@ final popup = BeautifulPopup(
 popup.show(
   title: 'String or Widget',
   content: 'String or Widget',
-  // ↓ optional parameters
   actions: [
     popup.button(
       label: 'Close',

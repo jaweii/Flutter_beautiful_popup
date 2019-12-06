@@ -19,7 +19,7 @@ class TemplateAuthentication extends BeautifulPopupTemplate {
   @override
   final maxHeight = 617;
   @override
-  final bodyMargin = 10;
+  final bodyMargin = 0;
   @override
   get layout {
     return [
@@ -27,14 +27,14 @@ class TemplateAuthentication extends BeautifulPopupTemplate {
         child: background,
       ),
       Positioned(
-        top: percentH(34),
+        top: percentH(32),
         child: title,
       ),
       Positioned(
         top: percentH(44),
-        left: percentW(8),
+        left: percentW(10),
         height: percentH(actions == null ? 52 : 38),
-        width: percentW(84),
+        width: percentW(80),
         child: content,
       ),
       Positioned(

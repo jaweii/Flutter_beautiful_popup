@@ -4,7 +4,7 @@ beautiful_popup, 承包你的应用弹窗。[Live Demo](https://jaweii.github.io
 
 ## 效果图:
 
-<img src="https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif" height="600">
+<img src="https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/example/images/show.gif" style="max-height: 600px;">
 
 ## 使用
 
@@ -12,7 +12,7 @@ beautiful_popup, 承包你的应用弹窗。[Live Demo](https://jaweii.github.io
 
 ```
 dependencies:
-    flutter_beautiful_popup: ^1.0.0
+    flutter_beautiful_popup: ^1.1.0
 ```
 
 引入依赖项:
@@ -31,7 +31,6 @@ final popup = BeautifulPopup(
 popup.show(
   title: 'String or Widget',
   content: 'String or Widget',
-  // ↓ optional parameters
   actions: [
     popup.button(
       label: 'Close',
