@@ -36,9 +36,8 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         width = maxWidth - bodyMargin * 2;
       } else {
         width = screenWidth - bodyMargin * 2;
-        // If the screen width less than the image width, Then reduce the image height;
-        height = width / maxWidth * maxHeight;
       }
+      height = width / maxWidth * maxHeight;
     }
     return Size(width, height);
   }

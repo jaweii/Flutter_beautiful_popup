@@ -1,6 +1,6 @@
 # flutter_beautiful_popup [中文](https://github.com/jaweii/Flutter_beautiful_popup/blob/master/README_CN.md)
 
-A flutter package to help you beautify your app popups, can be used in all platform.[Live Demo](https://jaweii.github.io/Flutter_beautiful_popup/example/build/web/#/).
+A flutter package to help you beautify your app popup, can be used in all platform.[Live Demo](https://jaweii.github.io/Flutter_beautiful_popup/example/build/web/#/).
 
 ## Preview:
 
@@ -12,7 +12,7 @@ Add dependency to you `pubspec.yaml`:
 
 ```
 dependencies:
-    flutter_beautiful_popup: ^1.2.1
+    flutter_beautiful_popup: ^1.2.2
 ```
 
 Import the dependency:
