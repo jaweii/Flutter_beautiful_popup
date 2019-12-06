@@ -62,8 +62,8 @@ class TemplateBlueRocket extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(40),
         left: percentW(10),
+        right: percentW(10),
         height: percentH(actions == null ? 50 : 38),
-        width: percentW(80),
         child: content,
       ),
       Positioned(

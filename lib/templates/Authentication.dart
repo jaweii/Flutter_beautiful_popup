@@ -33,8 +33,8 @@ class TemplateAuthentication extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(44),
         left: percentW(10),
+        right: percentW(10),
         height: percentH(actions == null ? 52 : 38),
-        width: percentW(80),
         child: content,
       ),
       Positioned(

@@ -60,8 +60,8 @@ class TemplateOrangeRocket extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(50),
         left: percentW(6),
+        right: percentW(6),
         height: percentH(actions == null ? 46 : 34),
-        width: percentW(88),
         child: content,
       ),
       Positioned(

@@ -112,8 +112,8 @@ class TemplateThumb extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(28),
         left: percentW(10),
+        right: percentW(10),
         height: percentH(actions == null ? 62 : 50),
-        width: percentW(78),
         child: content,
       ),
       Positioned(

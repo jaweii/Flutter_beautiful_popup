@@ -33,8 +33,8 @@ class TemplateSuccess extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(58),
         left: percentW(8),
+        right: percentW(8),
         height: percentH(actions == null ? 40 : 24),
-        width: percentW(84),
         child: content,
       ),
       Positioned(

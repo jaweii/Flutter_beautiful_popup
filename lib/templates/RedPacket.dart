@@ -127,8 +127,8 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(40),
         left: percentW(12),
+        right: percentW(12),
         height: percentH(actions == null ? 56 : 42),
-        width: percentW(76),
         child: content,
       ),
       Positioned(
