@@ -27,9 +27,9 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
     double height = screenHeight > maxHeight ? maxHeight : screenHeight;
     double width;
     height = height - bodyMargin * 2;
-    if ((screenHeight - height) < 160) {
+    if ((screenHeight - height) < 140) {
       // For keep close button visible
-      height = screenHeight - 160;
+      height = screenHeight - 140;
       width = height / maxHeight * maxWidth;
     } else {
       if (screenWidth > maxWidth) {

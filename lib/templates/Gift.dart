@@ -84,8 +84,8 @@ class TemplateGift extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(36),
         left: percentW(5),
+        right: percentW(5),
         height: percentH(actions == null ? 60 : 50),
-        width: percentW(90),
         child: content,
       ),
       Positioned(

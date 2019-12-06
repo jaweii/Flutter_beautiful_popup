@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Demo-${i + 1}\n${demo.template}',
+                          'Demo-${i + 1}\n${demo?.instance?.runtimeType}',
                           textAlign: TextAlign.center,
                         )
                       ],
