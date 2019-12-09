@@ -161,6 +161,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
       @required String label,
       @required void Function() onPressed,
       bool outline = false,
+      TextStyle labelStyle = const TextStyle(),
     }) {
       final gradient = LinearGradient(colors: [
         primaryColor.withOpacity(0.5),
@@ -194,7 +195,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
               label,
               style: TextStyle(
                 color: labelColor,
-              ),
+              ).merge(labelStyle),
             ),
           ),
         ),

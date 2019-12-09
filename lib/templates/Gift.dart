@@ -26,6 +26,7 @@ class TemplateGift extends BeautifulPopupTemplate {
       @required String label,
       @required void Function() onPressed,
       bool outline = false,
+      TextStyle labelStyle = const TextStyle(),
     }) {
       final gradient = LinearGradient(colors: [
         options.primaryColor.withOpacity(0.9),
@@ -58,7 +59,7 @@ class TemplateGift extends BeautifulPopupTemplate {
               style: TextStyle(
                 color: Colors.white.withOpacity(0.95),
                 fontWeight: FontWeight.bold,
-              ),
+              ).merge(labelStyle),
             ),
           ),
         ),

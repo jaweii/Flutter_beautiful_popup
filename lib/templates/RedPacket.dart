@@ -69,6 +69,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
       @required String label,
       @required void Function() onPressed,
       bool outline = false,
+      TextStyle labelStyle = const TextStyle(),
     }) {
       final gradient = LinearGradient(colors: [
         Colors.yellowAccent.withOpacity(0.75),
@@ -101,7 +102,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
               style: TextStyle(
                 color: Colors.white.withOpacity(0.95),
                 fontWeight: FontWeight.bold,
-              ),
+              ).merge(labelStyle),
             ),
           ),
         ),

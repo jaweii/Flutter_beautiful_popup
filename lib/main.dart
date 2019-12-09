@@ -148,16 +148,25 @@ class BeautifulPopup {
     this.actions = actions;
     this.barrierDismissible = barrierDismissible;
     this.close = close ?? instance.close;
-
-    return showDialog(
-      context: context,
+    return showGeneralDialog(
+      barrierColor: Colors.black38,
       barrierDismissible: barrierDismissible,
-      builder: (ctx) {
+      barrierLabel: barrierDismissible ? 'beautiful_popup' : null,
+      context: context,
+      pageBuilder: (context, animation1, animation2) {},
+      transitionDuration: Duration(milliseconds: 200),
+      transitionBuilder: (ctx, a1, a2, child) {
         return WillPopScope(
           onWillPop: () {
             return Future.value(barrierDismissible);
           },
-          child: instance,
+          child: Transform.scale(
+            scale: a1.value,
+            child: Opacity(
+              opacity: a1.value,
+              child: instance,
+            ),
+          ),
         );
       },
     );

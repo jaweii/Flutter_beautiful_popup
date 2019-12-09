@@ -54,6 +54,7 @@ class TemplateThumb extends BeautifulPopupTemplate {
       @required String label,
       @required void Function() onPressed,
       bool outline = false,
+      TextStyle labelStyle = const TextStyle(),
     }) {
       final gradient = LinearGradient(colors: [
         Colors.white.withOpacity(0.25),
@@ -85,7 +86,7 @@ class TemplateThumb extends BeautifulPopupTemplate {
               label,
               style: TextStyle(
                 color: Colors.white.withOpacity(0.95),
-              ),
+              ).merge(labelStyle),
             ),
           ),
         ),
