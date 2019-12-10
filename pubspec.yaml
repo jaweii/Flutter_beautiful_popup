@@ -1,6 +1,6 @@
 name: flutter_beautiful_popup
-description: Beautify your app popups.
-version: 1.3.0
+description: A flutter package to help you beautify your app popups.
+version: 1.3.1
 homepage: https://jaweii.github.io/Flutter_beautiful_popup/example/build/web
 
 environment:
