@@ -7,9 +7,7 @@ import 'Common.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/red_packet.png)
 class TemplateRedPacket extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateRedPacket({
-    this.options,
-  }) : super(options: options);
+  TemplateRedPacket(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/red_packet.png';

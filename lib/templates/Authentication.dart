@@ -6,9 +6,7 @@ import 'Common.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/authentication.png)
 class TemplateAuthentication extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateAuthentication({
-    this.options,
-  }) : super(options: options);
+  TemplateAuthentication(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/authentication.png';

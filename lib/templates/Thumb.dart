@@ -7,9 +7,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/thumb.png)
 class TemplateThumb extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateThumb({
-    this.options,
-  }) : super(options: options);
+  TemplateThumb(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/thumb.png';

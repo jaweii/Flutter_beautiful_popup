@@ -6,9 +6,7 @@ import '../main.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/camera.png)
 class TemplateCamera extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateCamera({
-    this.options,
-  }) : super(options: options);
+  TemplateCamera(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/camera.png';

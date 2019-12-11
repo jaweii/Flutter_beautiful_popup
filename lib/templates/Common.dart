@@ -12,9 +12,7 @@ typedef Widget BeautifulPopupButton({
 /// You can extend this class to custom your own template.
 abstract class BeautifulPopupTemplate extends StatefulWidget {
   final BeautifulPopup options;
-  BeautifulPopupTemplate({
-    this.options,
-  });
+  BeautifulPopupTemplate(this.options);
 
   final State<StatefulWidget> state = BeautifulPopupTemplateState();
 

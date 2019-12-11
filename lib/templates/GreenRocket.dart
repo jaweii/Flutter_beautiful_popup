@@ -6,9 +6,7 @@ import '../main.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/rocket_green.png)
 class TemplateGreenRocket extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateGreenRocket({
-    this.options,
-  }) : super(options: options);
+  TemplateGreenRocket(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/rocket_green.png';

@@ -20,6 +20,8 @@ import 'templates/Fail.dart';
 import 'templates/Authentication.dart';
 import 'templates/Term.dart';
 import 'templates/RedPacket.dart';
+
+export 'templates/Common.dart';
 export 'templates/OrangeRocket.dart';
 export 'templates/GreenRocket.dart';
 export 'templates/OrangeRocket2.dart';
@@ -37,9 +39,68 @@ export 'templates/Term.dart';
 export 'templates/RedPacket.dart';
 
 class BeautifulPopup {
-  final BuildContext context;
+  BuildContext _context;
+  BuildContext get context => _context;
 
-  final Type template;
+  Type _template;
+  Type get template => _template;
+
+  BeautifulPopupTemplate Function(BeautifulPopup options) _build;
+  BeautifulPopupTemplate get instance {
+    if (_build != null) return _build(this);
+    switch (template) {
+      case TemplateOrangeRocket:
+        return TemplateOrangeRocket(this);
+        break;
+      case TemplateGreenRocket:
+        return TemplateGreenRocket(this);
+        break;
+      case TemplateOrangeRocket2:
+        return TemplateOrangeRocket2(this);
+        break;
+      case TemplateCoin:
+        return TemplateCoin(this);
+        break;
+      case TemplateBlueRocket:
+        return TemplateBlueRocket(this);
+        break;
+      case TemplateThumb:
+        return TemplateThumb(this);
+        break;
+      case TemplateGift:
+        return TemplateGift(this);
+        break;
+      case TemplateCamera:
+        return TemplateCamera(this);
+        break;
+      case TemplateNotification:
+        return TemplateNotification(this);
+        break;
+      case TemplateGeolocation:
+        return TemplateGeolocation(this);
+        break;
+      case TemplateSuccess:
+        return TemplateSuccess(this);
+        break;
+      case TemplateFail:
+        return TemplateFail(this);
+        break;
+      case TemplateAuthentication:
+        return TemplateAuthentication(this);
+        break;
+      case TemplateTerm:
+        return TemplateTerm(this);
+        break;
+      case TemplateRedPacket:
+        return TemplateRedPacket(this);
+        break;
+      default:
+        return null;
+    }
+  }
+
+  ui.Image _illustration;
+  ui.Image get illustration => _illustration;
 
   dynamic title = '';
   dynamic content = '';
@@ -47,56 +108,31 @@ class BeautifulPopup {
   Widget close;
   bool barrierDismissible;
 
-  BeautifulPopupTemplate get instance {
-    switch (template) {
-      case TemplateOrangeRocket:
-        return TemplateOrangeRocket(options: this);
-      case TemplateGreenRocket:
-        return TemplateGreenRocket(options: this);
-      case TemplateOrangeRocket2:
-        return TemplateOrangeRocket2(options: this);
-      case TemplateCoin:
-        return TemplateCoin(options: this);
-      case TemplateBlueRocket:
-        return TemplateBlueRocket(options: this);
-      case TemplateThumb:
-        return TemplateThumb(options: this);
-      case TemplateGift:
-        return TemplateGift(options: this);
-      case TemplateCamera:
-        return TemplateCamera(options: this);
-      case TemplateNotification:
-        return TemplateNotification(options: this);
-      case TemplateGeolocation:
-        return TemplateGeolocation(options: this);
-      case TemplateSuccess:
-        return TemplateSuccess(options: this);
-      case TemplateFail:
-        return TemplateFail(options: this);
-      case TemplateAuthentication:
-        return TemplateAuthentication(options: this);
-      case TemplateTerm:
-        return TemplateTerm(options: this);
-      case TemplateRedPacket:
-        return TemplateRedPacket(options: this);
-      default:
-        throw ErrorDescription("Unexpected template $template");
-    }
-  }
-
   Color primaryColor;
-  ui.Image illustration;
 
   BeautifulPopup({
-    @required this.context,
-    @required this.template,
+    @required BuildContext context,
+    @required Type template,
   }) {
-    this.primaryColor =
-        instance?.primaryColor; // Get the default primary color.
+    _context = context;
+    _template = template;
+    primaryColor = instance?.primaryColor; // Get the default primary color.
+  }
+
+  static BeautifulPopup customize({
+    @required BuildContext context,
+    @required BeautifulPopupTemplate Function(BeautifulPopup options) build,
+  }) {
+    final popup = BeautifulPopup(
+      context: context,
+      template: null,
+    );
+    popup._build = build;
+    return popup;
   }
 
   /// Recolor the BeautifulPopup.
-  /// This method is  kind of slow.
+  /// This method is  kind of slow.R
   Future<BeautifulPopup> recolor(Color color) async {
     this.primaryColor = color;
     final illustrationData = await rootBundle.load(instance.illustrationKey);
@@ -121,7 +157,7 @@ class BeautifulPopup {
     final paint = await PaintingBinding.instance
         .instantiateImageCodec(asset != null ? img.encodePng(asset) : buffer);
     final nextFrame = await paint.getNextFrame();
-    illustration = nextFrame.image;
+    _illustration = nextFrame.image;
     return this;
   }
 
@@ -136,7 +172,7 @@ class BeautifulPopup {
   /// `barrierDismissible`: Determine whether this dialog can be dismissed. Default to `False`.
   ///
   /// `close`: Close widget.
-  show({
+  Future<T> show<T>({
     dynamic title,
     dynamic content,
     List<Widget> actions,
@@ -154,7 +190,7 @@ class BeautifulPopup {
       },
       child: instance,
     );
-    return showGeneralDialog(
+    return showGeneralDialog<T>(
       barrierColor: Colors.black38,
       barrierDismissible: barrierDismissible,
       barrierLabel: barrierDismissible ? 'beautiful_popup' : null,

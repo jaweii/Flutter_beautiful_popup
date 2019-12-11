@@ -6,9 +6,7 @@ import '../main.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/success.png)
 class TemplateSuccess extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateSuccess({
-    this.options,
-  }) : super(options: options);
+  TemplateSuccess(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/success.png';

@@ -6,9 +6,7 @@ import '../main.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/gift.png)
 class TemplateGift extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateGift({
-    this.options,
-  }) : super(options: options);
+  TemplateGift(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/gift.png';

@@ -7,9 +7,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/rocket_blue.png)
 class TemplateBlueRocket extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateBlueRocket({
-    this.options,
-  }) : super(options: options);
+  TemplateBlueRocket(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/rocket_blue.png';

@@ -12,7 +12,7 @@ Add dependency to you `pubspec.yaml`:
 
 ```
 dependencies:
-    flutter_beautiful_popup: ^1.3.1
+    flutter_beautiful_popup: ^1.4.0
 ```
 
 Import the dependency:
@@ -36,7 +36,9 @@ popup.show(
       label: 'Close',
       onPressed: Navigator.of(context).pop,
     ),
-  ]
+  ],
+  // bool barrierDismissible = false,
+  // Widget close,
 );
 ```
 
@@ -54,9 +56,78 @@ All available templates you can find in [Live Demo](https://jaweii.github.io/Flu
 You can extend `BeautifulPopupTemplate` to customize your own template like this:
 
 ```
-emm...
-To be added later...
+import 'package:flutter/material.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 
+class MyTemplate extends BeautifulPopupTemplate {
+  final BeautifulPopup options;
+  MyTemplate(this.options) : super(options);
+
+  @override
+  final illustrationKey = 'images/mytemplate.png';
+  @override
+  Color get primaryColor => options.primaryColor ?? Color(0xff000000); // The default primary color of the template is Colors.black.
+  @override
+  final maxWidth = 400; // In most situations, the value is the illustration size.
+  @override
+  final maxHeight = 600;
+  @override
+  final bodyMargin = 10;
+
+  // You need to adjust the layout to fit into your illustration.
+  @override
+  get layout {
+    return [
+      Positioned(
+        child: background,
+      ),
+      Positioned(
+        top: percentH(10),
+        child: title,
+      ),
+      Positioned(
+        top: percentH(40),
+        height: percentH(actions == null ? 32 : 42),
+        left: percentW(10),
+        right: percentW(10),
+        child: content,
+      ),
+      Positioned(
+        bottom: percentW(10),
+        left: percentW(10),
+        right: percentW(10),
+        child: actions ?? Container(),
+      ),
+    ];
+  }
+}
+```
+
+To display a popup with your own template:
+
+```
+final popup = BeautifulPopup.customize(
+  context: context,
+  build: (options) => MyTemplate(options),
+);
+popup.show(
+  title: 'Example',
+  content: Container(
+    color: Colors.black12,
+    child: Text(
+        'This popup shows you how to customize your own BeautifulPopupTemplate.'),
+  ),
+  actions: [
+    popup.button(
+      label: 'Code',
+      onPressed: () {
+        js.context.callMethod('open', [
+          'https://github.com/jaweii/Flutter_beautiful_popup/blob/master/example/lib/MyTemplate.dart'
+        ]);
+      },
+    ),
+  ],
+);
 ```
 
 ## Contribution

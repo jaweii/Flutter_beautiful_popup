@@ -6,9 +6,7 @@ import 'Common.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/term.png)
 class TemplateTerm extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateTerm({
-    this.options,
-  }) : super(options: options);
+  TemplateTerm(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/term.png';

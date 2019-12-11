@@ -5,6 +5,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_highlight/themes/github-gist.dart';
 import 'dart:js' as js;
+import 'MyTemplate.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,26 +31,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final templates = [
-    TemplateGift,
-    TemplateCamera,
-    TemplateNotification,
-    TemplateGeolocation,
-    TemplateSuccess,
-    TemplateFail,
-    // TemplateOrangeRocket,
-    TemplateGreenRocket,
-    TemplateOrangeRocket2,
-    TemplateCoin,
-    TemplateBlueRocket,
-    TemplateThumb,
-    TemplateAuthentication,
-    TemplateTerm,
-    TemplateRedPacket,
-  ];
+  @override
+  initState() {
+    super.initState();
+    final templates = [
+      TemplateGift,
+      TemplateCamera,
+      TemplateNotification,
+      TemplateGeolocation,
+      TemplateSuccess,
+      TemplateFail,
+      // TemplateOrangeRocket,
+      TemplateGreenRocket,
+      TemplateOrangeRocket2,
+      TemplateCoin,
+      TemplateBlueRocket,
+      TemplateThumb,
+      TemplateAuthentication,
+      TemplateTerm,
+      TemplateRedPacket,
+    ];
 
-  List<BeautifulPopup> get demos {
-    return templates.map((template) {
+    demos = templates.map((template) {
       return BeautifulPopup(
         context: context,
         template: template,
@@ -57,9 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+  List<BeautifulPopup> demos = [];
+
   BeautifulPopup activeDemo;
 
   Widget get showcases {
+    final popup = BeautifulPopup.customize(
+      context: context,
+      build: (options) => MyTemplate(options),
+    );
     return Flex(
       mainAxisSize: MainAxisSize.max,
       direction: Axis.vertical,
@@ -75,13 +84,42 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          child: Text(
-            'All Templates:',
-            style: Theme.of(context).textTheme.title.merge(
-                  TextStyle(
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
+          child: Flex(
+            direction: Axis.horizontal,
+            children: <Widget>[
+              Text(
+                'All Templates:',
+                style: Theme.of(context).textTheme.title.merge(
+                      TextStyle(
+                        backgroundColor: Colors.transparent,
+                      ),
+                    ),
+              ),
+              Spacer(),
+              FlatButton(
+                child: Text('Customize'),
+                onPressed: () {
+                  popup.show(
+                    title: 'Example',
+                    content: Container(
+                      color: Colors.black12,
+                      child: Text(
+                          'This popup shows you how to customize your own BeautifulPopupTemplate.'),
+                    ),
+                    actions: [
+                      popup.button(
+                        label: 'Code',
+                        onPressed: () {
+                          js.context.callMethod('open', [
+                            'https://github.com/jaweii/Flutter_beautiful_popup/blob/master/example/lib/MyTemplate.dart'
+                          ]);
+                        },
+                      ),
+                    ],
+                  );
+                },
+              )
+            ],
           ),
         ),
         Expanded(

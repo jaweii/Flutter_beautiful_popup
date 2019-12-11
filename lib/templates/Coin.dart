@@ -6,9 +6,7 @@ import '../main.dart';
 /// ![](https://raw.githubusercontent.com/jaweii/Flutter_beautiful_popup/master/img/bg/coin.png)
 class TemplateCoin extends BeautifulPopupTemplate {
   final BeautifulPopup options;
-  TemplateCoin({
-    this.options,
-  }) : super(options: options);
+  TemplateCoin(this.options) : super(options);
 
   @override
   final illustrationPath = 'img/bg/coin.png';
