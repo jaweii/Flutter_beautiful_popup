@@ -6,6 +6,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 typedef Widget BeautifulPopupButton({
   @required String label,
   @required void Function() onPressed,
+  TextStyle labelStyle,
   bool outline,
 });
 

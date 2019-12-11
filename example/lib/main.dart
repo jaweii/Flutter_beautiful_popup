@@ -109,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     actions: [
                       popup.button(
                         label: 'Code',
+                        labelStyle: TextStyle(),
                         onPressed: () {
                           js.context.callMethod('open', [
                             'https://github.com/jaweii/Flutter_beautiful_popup/blob/master/example/lib/MyTemplate.dart'
