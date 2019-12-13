@@ -18,7 +18,7 @@ dependencies:
 Import the dependency:
 
 ```
-import 'package:beautiful_popup/main.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 ```
 
 And then you can display a popup with certain template like this:

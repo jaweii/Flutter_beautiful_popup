@@ -18,7 +18,7 @@ dependencies:
 引入依赖项:
 
 ```
-import 'package:beautiful_popup/main.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 ```
 
 然后你就可以用指定的模板，显示一个漂亮的弹窗:
