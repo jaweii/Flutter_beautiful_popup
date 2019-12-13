@@ -8,6 +8,7 @@ typedef Widget BeautifulPopupButton({
   @required void Function() onPressed,
   TextStyle labelStyle,
   bool outline,
+  bool flat,
 });
 
 /// You can extend this class to custom your own template.
@@ -160,23 +161,25 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
       @required String label,
       @required void Function() onPressed,
       bool outline = false,
+      bool flat = false,
       TextStyle labelStyle = const TextStyle(),
     }) {
       final gradient = LinearGradient(colors: [
         primaryColor.withOpacity(0.5),
         primaryColor,
       ]);
-      final double elevation = outline ? 0 : 2;
+      final double elevation = (outline || flat) ? 0 : 2;
       final labelColor =
-          outline ? primaryColor : Colors.white.withOpacity(0.95);
+          (outline || flat) ? primaryColor : Colors.white.withOpacity(0.95);
       final decoration = BoxDecoration(
-        gradient: outline ? null : gradient,
+        gradient: (outline || flat) ? null : gradient,
         borderRadius: BorderRadius.all(Radius.circular(80.0)),
         border: Border.all(
           color: outline ? primaryColor : Colors.transparent,
-          width: outline ? 1 : 0,
+          width: (outline && !flat) ? 1 : 0,
         ),
       );
+      final minHeight = 40.0 - (outline ? 2 : 0);
       return RaisedButton(
         color: Colors.transparent,
         elevation: elevation,
@@ -187,7 +190,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
           child: Container(
             constraints: BoxConstraints(
               minWidth: 100,
-              minHeight: 40.0,
+              minHeight: minHeight,
             ),
             alignment: Alignment.center,
             child: Text(

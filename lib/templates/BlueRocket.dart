@@ -30,7 +30,7 @@ class TemplateBlueRocket extends BeautifulPopupTemplate {
       );
     }
     return SizedBox(
-      width: percentW(100),
+      width: percentW(54),
       child: Opacity(
         opacity: 0.9,
         child: AutoSizeText(

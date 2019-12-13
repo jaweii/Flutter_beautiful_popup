@@ -25,7 +25,7 @@ class TemplateSuccess extends BeautifulPopupTemplate {
         child: background,
       ),
       Positioned(
-        top: percentH(48),
+        top: percentH(46),
         child: title,
       ),
       Positioned(

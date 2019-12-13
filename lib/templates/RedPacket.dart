@@ -67,21 +67,25 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
       @required String label,
       @required void Function() onPressed,
       bool outline = false,
+      bool flat = false,
       TextStyle labelStyle = const TextStyle(),
     }) {
       final gradient = LinearGradient(colors: [
-        Colors.yellowAccent.withOpacity(0.75),
-        Colors.yellowAccent.withOpacity(0.5),
+        primaryColor.withOpacity(0.5),
+        primaryColor,
       ]);
-      final double elevation = outline ? 0 : 2;
+      final double elevation = (outline || flat) ? 0 : 2;
+      final labelColor =
+          (outline || flat) ? primaryColor : Colors.white.withOpacity(0.95);
       final decoration = BoxDecoration(
-        gradient: outline ? null : gradient,
+        gradient: (outline || flat) ? null : gradient,
         borderRadius: BorderRadius.all(Radius.circular(80.0)),
         border: Border.all(
-          color: outline ? Colors.white.withOpacity(0.95) : Colors.transparent,
-          width: outline ? 2 : 0,
+          color: outline ? primaryColor : Colors.transparent,
+          width: (outline && !flat) ? 1 : 0,
         ),
       );
+      final minHeight = 40.0 - (outline ? 2 : 0);
       return RaisedButton(
         color: Colors.transparent,
         elevation: elevation,
@@ -92,7 +96,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
           child: Container(
             constraints: BoxConstraints(
               minWidth: 100,
-              minHeight: 40.0 - (outline ? 4 : 0),
+              minHeight: minHeight,
             ),
             alignment: Alignment.center,
             child: Text(

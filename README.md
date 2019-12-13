@@ -12,7 +12,7 @@ Add dependency to you `pubspec.yaml`:
 
 ```
 dependencies:
-    flutter_beautiful_popup: ^1.4.1
+    flutter_beautiful_popup: ^1.5.0
 ```
 
 Import the dependency:
