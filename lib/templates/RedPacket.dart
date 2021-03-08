@@ -39,7 +39,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
             options.title,
             maxLines: 1,
             style: TextStyle(
-              fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+              fontSize: Theme.of(options.context).textTheme.headline4!.fontSize,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -49,11 +49,12 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
     );
   }
 
-  Widget get content {
+  Widget? get content {
     return options.content is String
         ? AutoSizeText(
             options.content,
-            minFontSize: Theme.of(options.context).textTheme.subhead.fontSize,
+            minFontSize:
+                Theme.of(options.context).textTheme.subtitle1!.fontSize!,
             style: TextStyle(
               color: Colors.white.withOpacity(0.95),
             ),
@@ -64,8 +65,8 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
   @override
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),
@@ -75,8 +76,6 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
         primaryColor,
       ]);
       final double elevation = (outline || flat) ? 0 : 2;
-      final labelColor =
-          (outline || flat) ? primaryColor : Colors.white.withOpacity(0.95);
       final decoration = BoxDecoration(
         gradient: (outline || flat) ? null : gradient,
         borderRadius: BorderRadius.all(Radius.circular(80.0)),
@@ -132,7 +131,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
         left: percentW(12),
         right: percentW(12),
         height: percentH(actions == null ? 56 : 42),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(10),

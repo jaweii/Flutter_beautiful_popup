@@ -4,11 +4,11 @@ import 'dart:ui' as ui;
 import 'package:auto_size_text/auto_size_text.dart';
 
 typedef Widget BeautifulPopupButton({
-  @required String label,
-  @required void Function() onPressed,
-  TextStyle labelStyle,
-  bool outline,
-  bool flat,
+  required String label,
+  required void Function() onPressed,
+  required TextStyle labelStyle,
+  required bool outline,
+  required bool flat,
 });
 
 /// You can extend this class to custom your own template.
@@ -55,11 +55,11 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
       'packages/flutter_beautiful_popup/$illustrationPath';
   Color get primaryColor;
 
-  num percentW(num n) {
+  double percentW(double n) {
     return width * n / 100;
   }
 
-  num percentH(num n) {
+  double percentH(double n) {
     return height * n / 100;
   }
 
@@ -114,7 +114,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.headline4!.fontSize,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -123,11 +123,12 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
     );
   }
 
-  Widget get content {
+  Widget? get content {
     return options.content is String
         ? AutoSizeText(
             options.content,
-            minFontSize: Theme.of(options.context).textTheme.subhead.fontSize,
+            minFontSize:
+                Theme.of(options.context).textTheme.subtitle1!.fontSize!,
             style: TextStyle(
               color: Colors.black87,
             ),
@@ -135,14 +136,14 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         : options.content;
   }
 
-  Widget get actions {
-    if (options.actions == null || options.actions.length == 0) return null;
+  Widget? get actions {
+    if (options.actions == null || options.actions!.length == 0) return null;
     return Flex(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       direction: Axis.horizontal,
-      children: options.actions
+      children: options.actions!
           .map(
             (button) => Flexible(
               flex: 1,
@@ -158,8 +159,8 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),
@@ -201,10 +202,6 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
             ),
           ),
         ),
-        padding: EdgeInsets.all(0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
         onPressed: onPressed,
       );
     };
@@ -214,7 +211,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 }
 
 class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
-  OverlayEntry closeEntry;
+  OverlayEntry? closeEntry;
   @override
   void initState() {
     super.initState();
@@ -229,7 +226,6 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
                   4 -
               20;
           return Stack(
-            overflow: Overflow.visible,
             children: <Widget>[
               Positioned(
                 child: Container(
@@ -244,7 +240,7 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
           );
         },
       );
-      Overlay.of(context).insert(closeEntry);
+      Overlay.of(context)!.insert(closeEntry!);
     });
   }
 
@@ -260,10 +256,7 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
             margin: EdgeInsets.all(widget.bodyMargin),
             height: widget.height,
             width: widget.width,
-            child: Stack(
-              overflow: Overflow.visible,
-              children: widget.layout,
-            ),
+            child: Stack(children: widget.layout),
           ),
         )
       ],
@@ -278,16 +271,16 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
 }
 
 class ImageEditor extends CustomPainter {
-  ui.Image image;
+  ui.Image? image;
   ImageEditor({
-    @required this.image,
+    required this.image,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawImageRect(
-      image,
-      Rect.fromLTRB(0, 0, image.width.toDouble(), image.height.toDouble()),
+      image!,
+      Rect.fromLTRB(0, 0, image!.width.toDouble(), image!.height.toDouble()),
       Rect.fromLTRB(0, 0, size.width, size.height),
       new Paint(),
     );

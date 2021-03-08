@@ -33,7 +33,7 @@ class TemplateTerm extends BeautifulPopupTemplate {
         left: percentW(12),
         right: percentW(12),
         height: percentH(actions == null ? 52 : 42),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(9),

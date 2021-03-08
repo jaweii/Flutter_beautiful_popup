@@ -33,7 +33,7 @@ class TemplateCamera extends BeautifulPopupTemplate {
         height: percentH(actions == null ? 40 : 24),
         left: percentW(8),
         right: percentW(8),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(8),

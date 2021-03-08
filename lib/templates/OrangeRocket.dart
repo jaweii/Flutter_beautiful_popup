@@ -35,7 +35,7 @@ class TemplateOrangeRocket extends BeautifulPopupTemplate {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.headline4!.fontSize,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -60,7 +60,7 @@ class TemplateOrangeRocket extends BeautifulPopupTemplate {
         left: percentW(6),
         right: percentW(6),
         height: percentH(actions == null ? 46 : 34),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(5),

@@ -37,7 +37,7 @@ class TemplateThumb extends BeautifulPopupTemplate {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.headline4!.fontSize,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -49,8 +49,8 @@ class TemplateThumb extends BeautifulPopupTemplate {
   @override
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),
@@ -60,8 +60,6 @@ class TemplateThumb extends BeautifulPopupTemplate {
         primaryColor,
       ]);
       final double elevation = (outline || flat) ? 0 : 2;
-      final labelColor =
-          (outline || flat) ? primaryColor : Colors.white.withOpacity(0.95);
       final decoration = BoxDecoration(
         gradient: (outline || flat) ? null : gradient,
         borderRadius: BorderRadius.all(Radius.circular(80.0)),
@@ -117,7 +115,7 @@ class TemplateThumb extends BeautifulPopupTemplate {
         left: percentW(10),
         right: percentW(10),
         height: percentH(actions == null ? 62 : 50),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(14),

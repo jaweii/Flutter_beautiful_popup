@@ -33,7 +33,7 @@ class TemplateGreenRocket extends BeautifulPopupTemplate {
         left: percentW(14),
         right: percentW(14),
         height: percentH(actions == null ? 44 : 32),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(12),

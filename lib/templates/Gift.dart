@@ -21,8 +21,8 @@ class TemplateGift extends BeautifulPopupTemplate {
   @override
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),
@@ -32,8 +32,6 @@ class TemplateGift extends BeautifulPopupTemplate {
         primaryColor,
       ]);
       final double elevation = (outline || flat) ? 0 : 2;
-      final labelColor =
-          (outline || flat) ? primaryColor : Colors.white.withOpacity(0.95);
       final decoration = BoxDecoration(
         gradient: (outline || flat) ? null : gradient,
         borderRadius: BorderRadius.all(Radius.circular(80.0)),
@@ -89,7 +87,7 @@ class TemplateGift extends BeautifulPopupTemplate {
         left: percentW(5),
         right: percentW(5),
         height: percentH(actions == null ? 60 : 50),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(5),

@@ -37,7 +37,7 @@ class TemplateBlueRocket extends BeautifulPopupTemplate {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.headline4!.fontSize,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -62,7 +62,7 @@ class TemplateBlueRocket extends BeautifulPopupTemplate {
         left: percentW(10),
         right: percentW(10),
         height: percentH(actions == null ? 50 : 38),
-        child: content,
+        child: content!,
       ),
       Positioned(
         bottom: percentW(12),

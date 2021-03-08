@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'dart:js' as js;
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_highlight/themes/github-gist.dart';
-import 'dart:js' as js;
+
 import 'MyTemplate.dart';
 
 void main() {
@@ -89,14 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text(
                 'All Templates:',
-                style: Theme.of(context).textTheme.title.merge(
+                style: Theme.of(context).textTheme.headline6.merge(
                       TextStyle(
                         backgroundColor: Colors.transparent,
                       ),
                     ),
               ),
               Spacer(),
-              FlatButton(
+              TextButton(
                 child: Text('Customize'),
                 onPressed: () {
                   popup.show(
@@ -209,7 +211,7 @@ popup.show(
                     margin: EdgeInsets.fromLTRB(20, 20, 10, 10),
                     child: Text(
                       '# Usage',
-                      style: Theme.of(context).textTheme.title.merge(
+                      style: Theme.of(context).textTheme.headline6.merge(
                             TextStyle(
                               color: Colors.black54,
                               backgroundColor: Colors.transparent,
@@ -280,7 +282,7 @@ popup.show(
     Color color = demo.primaryColor.withOpacity(0.5);
     showDialog(
       context: context,
-      child: AlertDialog(
+      builder: (context) => AlertDialog(
         title: const Text('Pick a color!'),
         content: SingleChildScrollView(
           child: ColorPicker(
