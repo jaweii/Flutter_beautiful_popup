@@ -35,7 +35,7 @@ class TemplateOrangeRocket extends BeautifulPopupTemplate {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),

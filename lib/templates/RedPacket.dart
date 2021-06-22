@@ -39,7 +39,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
             options.title,
             maxLines: 1,
             style: TextStyle(
-              fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+              fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -53,7 +53,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
     return options.content is String
         ? AutoSizeText(
             options.content,
-            minFontSize: Theme.of(options.context).textTheme.subhead.fontSize,
+            minFontSize: Theme.of(options.context).textTheme.subhead?.fontSize,
             style: TextStyle(
               color: Colors.white.withOpacity(0.95),
             ),
@@ -64,8 +64,8 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
   @override
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),

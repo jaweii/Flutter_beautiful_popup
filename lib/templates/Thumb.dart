@@ -37,7 +37,7 @@ class TemplateThumb extends BeautifulPopupTemplate {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -49,8 +49,8 @@ class TemplateThumb extends BeautifulPopupTemplate {
   @override
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),

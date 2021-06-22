@@ -4,8 +4,8 @@ import 'dart:ui' as ui;
 import 'package:auto_size_text/auto_size_text.dart';
 
 typedef Widget BeautifulPopupButton({
-  @required String label,
-  @required void Function() onPressed,
+  required String label,
+  required void Function() onPressed,
   TextStyle labelStyle,
   bool outline,
   bool flat,
@@ -55,11 +55,11 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
       'packages/flutter_beautiful_popup/$illustrationPath';
   Color get primaryColor;
 
-  num percentW(num n) {
+  double percentW(double n) {
     return width * n / 100;
   }
 
-  num percentH(num n) {
+  double percentH(double n) {
     return height * n / 100;
   }
 
@@ -80,7 +80,8 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
   }
 
   Widget get background {
-    return options.illustration == null
+    final illustration = options.illustration;
+    return illustration == null
         ? Image.asset(
             illustrationKey,
             width: percentW(100),
@@ -90,7 +91,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         : CustomPaint(
             size: Size(percentW(100), percentH(100)),
             painter: ImageEditor(
-              image: options.illustration,
+              image: illustration,
             ),
           );
   }
@@ -114,7 +115,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1.fontSize,
+            fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -127,7 +128,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
     return options.content is String
         ? AutoSizeText(
             options.content,
-            minFontSize: Theme.of(options.context).textTheme.subhead.fontSize,
+            minFontSize: Theme.of(options.context).textTheme.subhead?.fontSize,
             style: TextStyle(
               color: Colors.black87,
             ),
@@ -135,14 +136,15 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         : options.content;
   }
 
-  Widget get actions {
-    if (options.actions == null || options.actions.length == 0) return null;
+  Widget? get actions {
+    final actionsList = options.actions;
+    if (actionsList == null || actionsList.length == 0) return null;
     return Flex(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       direction: Axis.horizontal,
-      children: options.actions
+      children: actionsList
           .map(
             (button) => Flexible(
               flex: 1,
@@ -158,8 +160,8 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 
   BeautifulPopupButton get button {
     return ({
-      @required String label,
-      @required void Function() onPressed,
+      required String label,
+      required void Function() onPressed,
       bool outline = false,
       bool flat = false,
       TextStyle labelStyle = const TextStyle(),
@@ -214,7 +216,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
 }
 
 class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
-  OverlayEntry closeEntry;
+  OverlayEntry? closeEntry;
   @override
   void initState() {
     super.initState();
@@ -244,7 +246,8 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
           );
         },
       );
-      Overlay.of(context).insert(closeEntry);
+      final entry = closeEntry;
+      if (entry != null) Overlay.of(context)?.insert(entry);
     });
   }
 
@@ -280,7 +283,7 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
 class ImageEditor extends CustomPainter {
   ui.Image image;
   ImageEditor({
-    @required this.image,
+    required this.image,
   });
 
   @override
