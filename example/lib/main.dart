@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_highlight/themes/github-gist.dart';
-import 'dart:js' as js;
+import 'package:url_launcher/url_launcher.dart';
 import 'MyTemplate.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<BeautifulPopup> demos = [];
 
-  BeautifulPopup activeDemo;
+  BeautifulPopup? activeDemo;
 
   Widget get showcases {
     final popup = BeautifulPopup.customize(
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text(
                 'All Templates:',
-                style: Theme.of(context).textTheme.title.merge(
+                style: Theme.of(context).textTheme.title?.merge(
                       TextStyle(
                         backgroundColor: Colors.transparent,
                       ),
@@ -110,10 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       popup.button(
                         label: 'Code',
                         labelStyle: TextStyle(),
-                        onPressed: () {
-                          js.context.callMethod('open', [
-                            'https://github.com/jaweii/Flutter_beautiful_popup/blob/master/example/lib/MyTemplate.dart'
-                          ]);
+                        onPressed: () async {
+                          await _launchURL(
+                            'https://github.com/jaweii/Flutter_beautiful_popup/blob/master/example/lib/MyTemplate.dart',
+                          );
                         },
                       ),
                     ],
@@ -138,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     constraints: BoxConstraints(minWidth: 160),
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: demo.primaryColor.withOpacity(0.25),
+                      color: demo.primaryColor?.withOpacity(0.25),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(
@@ -154,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Demo-${i + 1}\n${demo?.instance?.runtimeType}',
+                          'Demo-${i + 1}\n${demo.instance.runtimeType}',
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -176,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final exampleCode = ''' 
 final popup = BeautifulPopup(
   context: context,
-  template: ${activeDemo?.instance?.runtimeType ?? '// Select a template in right'},
+  template: ${activeDemo?.instance.runtimeType ?? '// Select a template in right'},
 );
                                                                   
 popup.show(
@@ -209,7 +210,7 @@ popup.show(
                     margin: EdgeInsets.fromLTRB(20, 20, 10, 10),
                     child: Text(
                       '# Usage',
-                      style: Theme.of(context).textTheme.title.merge(
+                      style: Theme.of(context).textTheme.title?.merge(
                             TextStyle(
                               color: Colors.black54,
                               backgroundColor: Colors.transparent,
@@ -262,9 +263,10 @@ popup.show(
               width: 32,
               height: 32,
             ),
-            onPressed: () {
-              js.context.callMethod('open',
-                  ['https://github.com/jaweii/Flutter_beautiful_popup']);
+            onPressed: () async {
+              await _launchURL(
+                'https://github.com/jaweii/Flutter_beautiful_popup',
+              );
             },
           ),
         ],
@@ -273,20 +275,20 @@ popup.show(
     );
   }
 
-  changeColor(
+  void changeColor(
     BeautifulPopup demo,
-    void Function(Color color) callback,
+    void Function(Color? color)? callback,
   ) {
-    Color color = demo.primaryColor.withOpacity(0.5);
+    Color? color = demo.primaryColor?.withOpacity(0.5);
     showDialog(
       context: context,
-      child: AlertDialog(
+      builder: (context) => AlertDialog(
         title: const Text('Pick a color!'),
         content: SingleChildScrollView(
           child: ColorPicker(
-            pickerColor: color,
+            pickerColor: color == null ? Color(0xFF000000) : color!,
             onColorChanged: (c) => color = c,
-            enableLabel: true,
+            showLabel: true,
             pickerAreaHeightPercent: 0.8,
           ),
         ),
@@ -294,7 +296,7 @@ popup.show(
           FlatButton(
             child: const Text('Got it'),
             onPressed: () async {
-              callback(color);
+              callback?.call(color);
             },
           ),
         ],
@@ -303,7 +305,7 @@ popup.show(
   }
 
   openDemo({
-    @required BeautifulPopup demo,
+    required BeautifulPopup demo,
     dynamic title = 'String',
     dynamic content =
         'BeautifulPopup is a flutter package that is responsible for beautify your app popups.',
@@ -323,7 +325,7 @@ popup.show(
               demo = await BeautifulPopup(
                 context: context,
                 template: demo.template,
-              ).recolor(color);
+              ).recolor(color!);
               Navigator.of(context).popUntil((route) {
                 if (route.settings.name == '/') return true;
                 return false;
@@ -361,7 +363,7 @@ popup.show(
                       padding: EdgeInsets.only(top: 20),
                       child: Icon(
                         Icons.star,
-                        color: demo.primaryColor.withOpacity(0.75),
+                        color: demo.primaryColor?.withOpacity(0.75),
                         size: 10,
                       ),
                     )
@@ -492,5 +494,9 @@ popup.show(
         )
       ],
     );
+  }
+
+  Future<void> _launchURL(String _url) async {
+    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
   }
 }

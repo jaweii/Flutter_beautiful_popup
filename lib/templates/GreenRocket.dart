@@ -25,7 +25,7 @@ class TemplateGreenRocket extends BeautifulPopupTemplate {
         child: background,
       ),
       Positioned(
-        top: percentH(35.0),
+        top: percentH(35),
         child: title,
       ),
       Positioned(

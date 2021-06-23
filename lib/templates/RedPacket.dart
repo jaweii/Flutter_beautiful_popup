@@ -53,7 +53,8 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
     return options.content is String
         ? AutoSizeText(
             options.content,
-            minFontSize: Theme.of(options.context).textTheme.subhead?.fontSize,
+            minFontSize:
+                Theme.of(options.context).textTheme.subhead?.fontSize ?? 12,
             style: TextStyle(
               color: Colors.white.withOpacity(0.95),
             ),

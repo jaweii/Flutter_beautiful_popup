@@ -4,6 +4,6 @@ import 'package:flutter_beautiful_popup/main.dart';
 
 void main() {
   test('test', () {
-    final popup = BeautifulPopup();
+    // final popup = BeautifulPopup();
   });
 }
