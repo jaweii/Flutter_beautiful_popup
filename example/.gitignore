@@ -31,7 +31,6 @@
 build/app
 build/flutter_assets
 build/kotlin
-build
 # Web related
 lib/generated_plugin_registrant.dart
 
