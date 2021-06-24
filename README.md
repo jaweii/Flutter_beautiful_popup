@@ -130,8 +130,8 @@ popup.show(
 );
 ```
 
-## Contribution
+## Contributor
 
-## Licence
-
-[MIT](http://opensource.org/licenses/MIT)
+<a href="https://github.com/jaweii/Flutter_beautiful_popup/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jaweii/Flutter_beautiful_popup" />
+</a>
