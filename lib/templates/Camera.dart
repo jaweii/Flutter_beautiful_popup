@@ -15,7 +15,7 @@ class TemplateCamera extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 500;
+  final maxHeight = 380;
   @override
   final bodyMargin = 20;
   @override

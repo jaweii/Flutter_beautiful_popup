@@ -15,7 +15,7 @@ class TemplateSuccess extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 588;
+  final maxHeight = 380;
   @override
   final bodyMargin = 30;
   @override

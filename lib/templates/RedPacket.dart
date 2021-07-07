@@ -16,7 +16,7 @@ class TemplateRedPacket extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 620;
+  final maxHeight = 380;
   @override
   final bodyMargin = 0;
   @override

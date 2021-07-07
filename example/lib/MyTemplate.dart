@@ -9,10 +9,11 @@ class MyTemplate extends BeautifulPopupTemplate {
   final illustrationKey = 'images/mytemplate.png';
   @override
   Color get primaryColor => options.primaryColor ?? Color(0xff000000);
+
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 600;
+  final maxHeight = 100;
   @override
   final bodyMargin = 10;
   @override

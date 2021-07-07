@@ -129,9 +129,11 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         ? AutoSizeText(
             options.content,
             minFontSize:
-                Theme.of(options.context).textTheme.subhead?.fontSize ?? 12,
+                20,
+                // Theme.of(options.context).textTheme.subhead?.fontSize ?? 12,
             style: TextStyle(
               color: Colors.black87,
+
             ),
           )
         : options.content;

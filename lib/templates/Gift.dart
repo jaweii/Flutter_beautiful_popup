@@ -15,7 +15,7 @@ class TemplateGift extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 580;
+  final maxHeight = 380;
   @override
   final bodyMargin = 30;
   @override
@@ -82,6 +82,7 @@ class TemplateGift extends BeautifulPopupTemplate {
       ),
       Positioned(
         top: percentH(26),
+
         child: title,
       ),
       Positioned(

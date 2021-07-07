@@ -16,7 +16,7 @@ class TemplateBlueRocket extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 512;
+  final maxHeight = 380;
   @override
   final bodyMargin = 0;
 

@@ -16,7 +16,7 @@ class TemplateThumb extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 570;
+  final maxHeight = 380;
   @override
   final bodyMargin = 0;
 

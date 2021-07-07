@@ -16,7 +16,7 @@ class TemplateOrangeRocket extends BeautifulPopupTemplate {
   @override
   final maxWidth = 400;
   @override
-  final maxHeight = 600;
+  final maxHeight = 380;
   @override
   final bodyMargin = 30;
   Widget get title {
@@ -35,7 +35,8 @@ class TemplateOrangeRocket extends BeautifulPopupTemplate {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
+            // fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
+            fontSize: 200,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
