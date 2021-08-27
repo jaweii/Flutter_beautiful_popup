@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import '../main.dart';
 import 'dart:ui' as ui;
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 typedef Widget BeautifulPopupButton({
   required String label,
@@ -181,11 +183,14 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         ),
       );
       final minHeight = 40.0 - (outline ? 2 : 0);
-      return RaisedButton(
-        color: Colors.transparent,
-        elevation: elevation,
-        highlightElevation: 0,
-        splashColor: Colors.transparent,
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          onPrimary: Colors.transparent,
+          primary: Colors.transparent,
+          shadowColor: Colors.transparent,
+          onSurface: Colors.transparent,
+          elevation: elevation,
+        ),
         child: Ink(
           decoration: decoration,
           child: Container(
