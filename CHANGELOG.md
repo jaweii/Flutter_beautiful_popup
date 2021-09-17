@@ -1,3 +1,6 @@
+## [1.7.0] - Compatible with SDK 2.5.0
+
+
 ## [1.6.0] - Migrated to null safety
 
 * Migrated to null safety

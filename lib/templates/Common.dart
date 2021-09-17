@@ -115,7 +115,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
           options.title,
           maxLines: 1,
           style: TextStyle(
-            fontSize: Theme.of(options.context).textTheme.display1?.fontSize,
+            fontSize: Theme.of(options.context).textTheme.headline6?.fontSize,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -128,8 +128,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
     return options.content is String
         ? AutoSizeText(
             options.content,
-            minFontSize:
-                Theme.of(options.context).textTheme.subhead?.fontSize ?? 12,
+            minFontSize: 10,
             style: TextStyle(
               color: Colors.black87,
             ),

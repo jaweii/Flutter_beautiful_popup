@@ -1,6 +1,6 @@
 name: flutter_beautiful_popup
 description: A flutter package to help you beautify your app popups.
-version: 1.6.0
+version: 1.7.0
 homepage: https://jaweii.github.io/Flutter_beautiful_popup/example/build/web
 
 environment:
@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   auto_size_text: ^3.0.0-nullsafety.0
-  image: ^3.0.2
+  image: ^3.0.4
 
 dev_dependencies:
   flutter_test:
