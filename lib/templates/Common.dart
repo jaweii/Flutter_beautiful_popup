@@ -231,7 +231,8 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
                   4 -
               20;
           return Stack(
-            overflow: Overflow.visible,
+            //overflow: Overflow.visible,
+            clipBehavior: Clip.none,
             children: <Widget>[
               Positioned(
                 child: Container(
@@ -264,7 +265,7 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
             height: widget.height,
             width: widget.width,
             child: Stack(
-              overflow: Overflow.visible,
+              clipBehavior: Clip.none,
               children: widget.layout,
             ),
           ),
