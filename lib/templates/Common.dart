@@ -182,11 +182,16 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
         ),
       );
       final minHeight = 40.0 - (outline ? 2 : 0);
-      return RaisedButton(
-        color: Colors.transparent,
-        elevation: elevation,
-        highlightElevation: 0,
-        splashColor: Colors.transparent,
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          elevation: elevation,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+        ),
+        // highlightElevation: 0,
+        // splashColor: Colors.transparent,
         child: Ink(
           decoration: decoration,
           child: Container(
@@ -203,10 +208,7 @@ abstract class BeautifulPopupTemplate extends StatefulWidget {
             ),
           ),
         ),
-        padding: EdgeInsets.all(0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
+        // padding: EdgeInsets.all(0),
         onPressed: onPressed,
       );
     };
@@ -231,7 +233,7 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
                   4 -
               20;
           return Stack(
-            overflow: Overflow.visible,
+            // overflow: Overflow.visible,
             children: <Widget>[
               Positioned(
                 child: Container(
@@ -264,7 +266,7 @@ class BeautifulPopupTemplateState extends State<BeautifulPopupTemplate> {
             height: widget.height,
             width: widget.width,
             child: Stack(
-              overflow: Overflow.visible,
+              // overflow: Overflow.visible,
               children: widget.layout,
             ),
           ),

@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
               ),
               Spacer(),
-              FlatButton(
+              TextButton(
                 child: Text('Customize'),
                 onPressed: () {
                   popup.show(
@@ -257,7 +257,7 @@ popup.show(
         backgroundColor:
             activeDemo?.primaryColor ?? Theme.of(context).primaryColor,
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Image.asset(
               'images/github.png',
               width: 32,
@@ -293,7 +293,7 @@ popup.show(
           ),
         ),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: const Text('Got it'),
             onPressed: () async {
               callback?.call(color);
@@ -464,9 +464,9 @@ popup.show(
                                   ),
                                   Container(
                                     alignment: Alignment.center,
-                                    child: FlatButton(
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
+                                    child: TextButton(
+                                      // hoverColor: Colors.transparent,
+                                      // highlightColor: Colors.transparent,
                                       child: Text('Close'),
                                       onPressed: Navigator.of(context).pop,
                                     ),
